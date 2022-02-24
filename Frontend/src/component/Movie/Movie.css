@@ -1,7 +1,7 @@
 .movieCard{
     border-width: 1px;
     border-radius: 10px;
-    border: solid 0.1px;
+    border: dashed 2px violet;
     direction: rtl;
     background-color: aliceblue;
     margin:1em auto;
@@ -11,4 +11,61 @@
     /* display: flex; */
     justify-content: center;
     display: block;
+    box-shadow: 0 0 15px violet;
+}
+
+.moviesearch{
+    border-width: 1px;
+    border-radius: 50px;
+    border: solid 10px green;
+    direction: rtl;
+    background-color: greenyellow;
+    margin:1em auto;
+    padding: 10px;
+    width: 80%;
+    align-items: center;    
+    /* display: flex; */
+    justify-content: center;
+    display: block;
+    box-shadow: 0 0 15px green;
+}
+.moviesearch:hover{
+    width: 90%;
+    transition: 2s;
+}
+
+#header{
+    border-end-end-radius: 50px;
+    border-start-start-radius: 50px;
+    background-color: orange;
+    border: 5px dashed red;
+    transition: 2s;
+    box-shadow: 0 0 15px red;
+}
+#header:hover{
+    background-color: yellow;
+}
+
+#search_btn{
+    background-color: blueviolet;
+    border-radius: 50px;
+    width: 80px;
+    box-shadow: 0 0 15px gray;
+}
+
+#uploadbar{
+   border:dashed blue;
+   box-shadow: 0 0 15px blueviolet;
+}
+
+#show_btn{
+    background-color: gold;
+    color: black;
+    width: 70px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px gray;
+}
+
+body{
+    background-color: lightblue;
 }

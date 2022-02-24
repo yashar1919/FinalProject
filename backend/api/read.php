@@ -13,12 +13,10 @@
     $stmt = $items->getMovies();
     $itemCount = $stmt->rowCount();
 
-
     if($itemCount > 0){
         
         $movieArr = array();
-        $movieArr["body"] = array();
-        $movieArr["itemCount"] = $itemCount;
+
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
@@ -29,10 +27,9 @@
                 "description" => $description,
                 "created" => $created
             );
-
-            array_push($movieArr["body"], $e);
+            array_push($movieArr, $e);
         }
-        echo json_encode($movieArr["body"]);
+        echo json_encode($movieArr);
     }
 
     else{

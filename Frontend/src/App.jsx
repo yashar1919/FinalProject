@@ -22,10 +22,12 @@ class App extends Component {
         name :'',
         poster:'',
         description :'',
-        created :'',      
+        created :'',  
+        searchname:'',
+        searchcreated:''    ,
     
         IsMovieShow:true
-     };  
+     };
 
      componentDidMount() {
         axios
@@ -120,6 +122,16 @@ class App extends Component {
         
     };
 
+    HandelSearchClick=()=>{
+      const copymoive = [...this.state.m_movies];
+      const filteredmovie = copymoive.filter(value =>{
+        return (!this.state.searchname || value.name.toLowerCase().includes(this.state.searchname.toLowerCase()) )
+        && (!this.state.searchcreated || value.created.toLowerCase().includes(this.state.searchcreated.toLowerCase()) )    
+      });
+      console.log(filteredmovie);
+      this.setState({m_movies: filteredmovie});
+    }    
+
     SetMovieName =(event)=>{
        this.setState({name: event.target.value});
     }    
@@ -136,6 +148,14 @@ class App extends Component {
         this.setState({description: event.target.value});
      }    
 
+     
+    SetSearchName =(event)=>{
+      this.setState({searchname: event.target.value});
+   } 
+   
+   SetSearchCreated =(event)=>{
+    this.setState({searchcreated: event.target.value});
+   } 
     render() {
        
         const {m_movies,IsMovieShow} = this.state;
@@ -146,7 +166,7 @@ class App extends Component {
             backgroundColor: "Pink"         
         };
         let Movie= <Movies movies={m_movies} DeleteMovie={this.handelDeleteMovie} edit={this.handelEditMovie} selectRow={this.HandelOnclickRow}/>
-        let LoadPage=  <Loadpage Movie={Movie} name={this.state.name} poster={this.state.poster} description ={this.state.description} created={this.state.created} NewMovie={this.handelNewMovie} ShowMovies={this.ButtonShowMoviesHandler} setName={this.SetMovieName} setPoster={this.SetMoviePoster} setDescriptio={this.SetMovieDescription} setCreated={this.SetMovieCreated}></Loadpage>
+        let LoadPage=  <Loadpage Movie={Movie} name={this.state.name} poster={this.state.poster} description ={this.state.description} created={this.state.created} NewMovie={this.handelNewMovie} ShowMovies={this.ButtonShowMoviesHandler} setName={this.SetMovieName} setPoster={this.SetMoviePoster} setDescriptio={this.SetMovieDescription} setCreated={this.SetMovieCreated} setSearchName={this.SetSearchName} setSearchCreated={this.SetSearchCreated} searchOnclick={this.HandelSearchClick}></Loadpage>
       //  let ShowMovie = <ShowMovie name={this.state.name} poster={this.state.poster} description ={this.state.description} created={this.state.created} editmovie={this.handelEditMovie}></ShowMovie>   
      //  let ShowMovie = <ShowMovie></ShowMovie>   
      
